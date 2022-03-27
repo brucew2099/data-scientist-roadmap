@@ -2,6 +2,7 @@
 
 
 ''' Example 1 '''
+
 # Import
 import csv
 # Open file
@@ -22,4 +23,4 @@ for row in csv_file:
 	# Get values with regex
 	row_data = re.findall('(.*)\t(.*)', str(row))
 	# And print
-	print('{}\'s color is {}'.format(row_data[0][0], row_data[0][1]))
+	print(f"{row_data[0][0]}'s color is {row_data[0][1]}")

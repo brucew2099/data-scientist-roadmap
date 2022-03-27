@@ -5,11 +5,7 @@ import numpy as np
 
 
 # Generate a list of 4 list of 5 random numbers each
-list_of_lists = []
-# Loop the action 4 times
-for i in range(4):
-	# Generate a list of 5 numbers between 0 and 100 and add this list to [list_of_lists]
-	list_of_lists.append(np.random.randint(low = 0, high = 100, size = 5))
+list_of_lists = [np.random.randint(low=0, high=100, size=5) for _ in range(4)]
 # Convert list_of_lists into numpy matrix
 matrix = np.matrix(list_of_lists)
 print('Here is your matrix:\n{}\n'.format(matrix))

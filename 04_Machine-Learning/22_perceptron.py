@@ -28,15 +28,10 @@ class Perceptron(object):
 	def predict(self, row, weights):
 
 		# Activation threshold function
-		activation = 0		
-		for i in range(len(row) - 1):
-			activation += weights[i] * row[i]
+		activation = sum(weights[i] * row[i] for i in range(len(row) - 1))
 		activation += self.bias
 		# Return class
-		if activation >= 0.0:
-			return 1.0
-		else:
-			return 0.0
+		return 1.0 if activation >= 0.0 else 0.0
 
 
 	# Estimate Perceptron weights using stochastic gradient descent
@@ -59,7 +54,7 @@ class Perceptron(object):
 					self.bias = self.bias + self.l_rate * error
 					for i in range(len(row)-1):
 						weights[i] = weights[i] + self.l_rate * error * row[i]
-			print('epoch: {}, lrate: {}, errors: {}'.format(epoch, self.l_rate, epoch_errors))
+			print(f'epoch: {epoch}, lrate: {self.l_rate}, errors: {epoch_errors}')
 
 		plt.plot(global_errors)
 		plt.ylim(-1, 2)
